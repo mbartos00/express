@@ -8,6 +8,7 @@ export default function (sequelize, Sequelize) {
     username: {
       type: Sequelize.STRING,
       allowNull: false,
+      unique: true,
     },
   });
 
