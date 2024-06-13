@@ -9,10 +9,7 @@ export const createUserSchema = object({
   username: string()
     .min(2)
     .max(32)
-    .matches(
-      /^[a-zA-Z]+$/,
-      "Only letters and digits are allowed for the username"
-    )
+    .matches(/^[a-zA-Z]+$/, "Only letters are allowed for the username")
     .required(),
   id: string().length(32).required(),
 });
