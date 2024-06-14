@@ -1,5 +1,10 @@
 import { Router } from "express";
-import { createUser, getUserList } from "../controllers/user.js";
+import {
+  createExercise,
+  createUser,
+  getUserList,
+  getUserExerciseList,
+} from "../controllers/user.js";
 const router = Router();
 
 router.post("/", (req, res, next) => {
@@ -8,6 +13,14 @@ router.post("/", (req, res, next) => {
 
 router.get("/", (req, res, next) => {
   getUserList(req, res, next);
+});
+
+router.post("/:id/exercise", (req, res, next) => {
+  createExercise(req, res, next);
+});
+
+router.get("/:id/logs", (req, res, next) => {
+  getUserExerciseList(req, res, next);
 });
 
 export default router;
