@@ -15,7 +15,7 @@ router.get("/", (req, res, next) => {
   getUserList(req, res, next);
 });
 
-router.post("/:id/exercise", (req, res, next) => {
+router.post("/:id/exercises", (req, res, next) => {
   createExercise(req, res, next);
 });
 

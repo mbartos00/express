@@ -4,6 +4,8 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import userRoutes from "./routes/user.js";
 import errorHandler from "./middlewares/errorHandler.js";
+import { fileURLToPath } from "url";
+import path, { dirname } from "path";
 
 const app = express();
 dotenv.config();
@@ -16,7 +18,14 @@ app.use(bodyParser.json());
 app.use("/api/users", userRoutes);
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/views/index.html");
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
+  res.sendFile(path.join(__dirname, "views", "index.html"));
+});
+
+app.all("*", (req, res) => {
+  res.status(404).json({ error: "Not found. Check the URL and try again." });
 });
 
 app.use(errorHandler);
