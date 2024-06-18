@@ -14,7 +14,7 @@ export default function (sequelize, Sequelize) {
     },
     date: {
       type: Sequelize.DATEONLY,
-      allowNull: false,
+      allowNull: true,
     },
   });
 

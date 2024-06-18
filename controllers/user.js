@@ -43,10 +43,9 @@ export const getUserList = async (req, res, next) => {
 export const createExercise = async (req, res, next) => {
   const params = {
     ...req.body,
-    date: req.body.date || new Date().toISOString().slice(0, 10),
+    date: req.body.date,
     userId: req.params.id,
   };
-
   try {
     await createExerciseSchema.validate(params);
 
